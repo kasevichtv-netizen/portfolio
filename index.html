@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Татьяна Касевич — редактор экспертных текстов</title>
+<meta name="description" content="Упаковываю опыт и знания экспертов, сохраняя голос автора. Экспертные тексты, которые формируют репутацию: от идеи и структуры до готовности к публикации.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --slate:#2C3A47;
+    --slate-deep:#212B35;
+    --cream:#F3EDE3;
+    --paper:#FAF7F2;
+    --ink:#1E252C;
+    --muted:#6B747E;
+    --line:#DCD4C7;
+    --terra:#B4644B;
+    --serif:'Cormorant Garamond', Georgia, serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--ink);
+    font-size:17px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  .narrow{max-width:760px}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--slate);
+    color:var(--cream);
+    padding:64px 0 76px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"»";
+    font-family:var(--serif);
+    font-size:420px;
+    line-height:1;
+    color:rgba(243,237,227,.05);
+    position:absolute;
+    right:-20px;
+    top:-70px;
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.45fr .85fr;
+    gap:56px;
+    align-items:center;
+    position:relative;
+    z-index:1;
+  }
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:rgba(243,237,227,.55);
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(36px,5vw,58px);
+    line-height:1.08;
+    letter-spacing:-.01em;
+    margin-bottom:12px;
+  }
+  .hero .role{
+    font-size:16px;
+    color:rgba(243,237,227,.72);
+    margin-bottom:30px;
+    font-weight:300;
+  }
+  .hero .promise{
+    font-family:var(--serif);
+    font-size:clamp(20px,2.6vw,26px);
+    line-height:1.45;
+    max-width:560px;
+    color:var(--cream);
+    border-left:2px solid var(--terra);
+    padding-left:24px;
+    margin-bottom:22px;
+  }
+  .hero .promise-sub{
+    max-width:560px;
+    color:rgba(243,237,227,.7);
+    font-weight:300;
+    font-size:16px;
+    margin-bottom:36px;
+  }
+  .portrait{
+    position:relative;
+    aspect-ratio:4/5;
+    background:rgba(243,237,227,.06);
+    border:1px solid rgba(243,237,227,.16);
+  }
+  .portrait::before{
+    content:"";
+    position:absolute;
+    inset:12px -12px -12px 12px;
+    border:1px solid rgba(180,100,75,.55);
+    pointer-events:none;
+    z-index:-1;
+  }
+  .portrait img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:50% 22%;
+    display:block;
+  }
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px}
+  .btn{
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:2px;
+    text-decoration:none;
+    font-size:15px;
+    font-weight:500;
+    letter-spacing:.01em;
+    transition:.2s;
+  }
+  .btn-primary{background:var(--cream);color:var(--slate-deep)}
+  .btn-primary:hover{background:#fff}
+  .btn-ghost{border:1px solid rgba(243,237,227,.35);color:var(--cream)}
+  .btn-ghost:hover{background:rgba(243,237,227,.1)}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:78px 0}
+  section+section{border-top:1px solid var(--line)}
+  .label{
+    font-size:11px;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--terra);
+    margin-bottom:18px;
+    font-weight:500;
+  }
+  h2{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(28px,4vw,40px);
+    line-height:1.2;
+    margin-bottom:26px;
+    letter-spacing:-.01em;
+  }
+  h3{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:22px;
+    line-height:1.3;
+    margin-bottom:10px;
+  }
+  p+p{margin-top:16px}
+  .muted{color:var(--muted)}
+  .lead{font-size:19px;line-height:1.65;font-weight:300}
+
+  /* ---------- INDUSTRIES ---------- */
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .chip{
+    border:1px solid var(--line);
+    padding:8px 16px;
+    border-radius:100px;
+    font-size:14px;
+    color:var(--ink);
+    background:#fff;
+  }
+
+  /* ---------- TOPICS ---------- */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:8px}
+  .card-block{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:30px 30px 34px;
+  }
+  .card-block h3{font-size:20px;margin-bottom:16px}
+  .card-block ul{list-style:none;margin-top:14px}
+  .card-block li{
+    font-size:15px;
+    line-height:1.6;
+    padding:9px 0 9px 20px;
+    position:relative;
+    border-bottom:1px solid #EFEAE2;
+  }
+  .card-block li:last-child{border-bottom:none}
+  .card-block li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--terra);
+  }
+
+  /* ---------- SERVICES ---------- */
+  table{width:100%;border-collapse:collapse;margin-top:10px;background:#fff}
+  th{
+    text-align:left;
+    font-size:11px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:500;
+    padding:16px 18px;
+    border-bottom:1px solid var(--line);
+  }
+  td{
+    padding:18px;
+    border-bottom:1px solid #EFEAE2;
+    font-size:15.5px;
+    vertical-align:top;
+  }
+  td:first-child{font-weight:500;width:34%}
+  tr:last-child td{border-bottom:none}
+
+  /* ---------- CASES ---------- */
+  .case{
+    background:#fff;
+    border:1px solid var(--line);
+    margin-bottom:34px;
+  }
+  .case-head{padding:34px 34px 0}
+  .case-num{
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--terra);
+    margin-bottom:12px;
+    display:block;
+  }
+  .case-meta{
+    font-size:13.5px;
+    color:var(--muted);
+    margin-bottom:22px;
+    line-height:1.6;
+  }
+  .case-body{padding:0 34px 34px}
+  .case-body h4{
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:500;
+    margin:26px 0 10px;
+  }
+  .case-body ul{list-style:none;margin-top:8px}
+  .case-body li{
+    font-size:15.5px;
+    padding:8px 0 8px 22px;
+    position:relative;
+    line-height:1.65;
+    border-bottom:1px solid #F3EFE8;
+  }
+  .case-body li:last-child{border-bottom:none}
+  .case-body li::before{content:"—";position:absolute;left:0;color:var(--terra)}
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:18px;border:1px solid var(--line)}
+  .ba > div{background:var(--paper);padding:20px 22px}
+  .ba .tag{
+    font-size:10px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    margin-bottom:10px;
+    font-weight:600;
+  }
+  .ba .before .tag{color:#9B8578}
+  .ba .after .tag{color:var(--slate)}
+  .ba p{font-size:14.5px;line-height:1.62;font-weight:300}
+  .result{
+    margin-top:24px;
+    padding:18px 22px;
+    background:var(--slate);
+    color:var(--cream);
+    font-size:15px;
+    line-height:1.6;
+    border-radius:2px;
+  }
+  .result strong{
+    display:block;
+    font-size:10px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    font-weight:500;
+    color:rgba(243,237,227,.55);
+    margin-bottom:8px;
+  }
+
+  /* ---------- CLIENTS ---------- */
+  .clients{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .clients p{font-size:15.5px;line-height:1.8;color:var(--ink)}
+  .clients .dot{color:var(--terra);padding:0 6px}
+
+  /* ---------- CONTACT ---------- */
+  #contact{
+    background:var(--slate);
+    color:var(--cream);
+    padding:80px 0;
+  }
+  #contact h2{color:var(--cream)}
+  #contact .lead{color:rgba(243,237,227,.75);max-width:600px;margin-bottom:38px}
+  .contact-links{display:flex;flex-wrap:wrap;gap:12px}
+  .clink{
+    display:block;
+    padding:18px 26px;
+    border:1px solid rgba(243,237,227,.25);
+    text-decoration:none;
+    color:var(--cream);
+    transition:.2s;
+    min-width:180px;
+  }
+  .clink:hover{background:rgba(243,237,227,.08);border-color:rgba(243,237,227,.5)}
+  .clink span{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(243,237,227,.5);margin-bottom:6px}
+  .clink b{font-weight:400;font-size:16px;word-break:break-word}
+
+  footer{
+    background:var(--slate-deep);
+    color:rgba(243,237,227,.45);
+    padding:28px 0;
+    font-size:13px;
+  }
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;width:100%;align-items:center}
+  footer a{color:rgba(243,237,227,.75);text-decoration:none;border-bottom:1px solid rgba(243,237,227,.2)}
+  footer a:hover{color:var(--cream);border-color:var(--cream)}
+  footer .x{font-family:var(--serif);font-size:15px}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    body{font-size:16px}
+    .hero{padding:48px 0 56px}
+    .hero::after{font-size:260px;top:-10px;right:-30px}
+    .hero-grid{grid-template-columns:1fr;gap:34px}
+    .portrait{max-width:340px;aspect-ratio:4/5;order:-1}
+    section{padding:56px 0}
+    .two-col,.clients{grid-template-columns:1fr;gap:24px}
+    .ba{grid-template-columns:1fr}
+    table, thead, tbody, tr, td, th{display:block;width:100%}
+    thead{display:none}
+    table{background:transparent}
+    tr{background:#fff;border:1px solid var(--line);border-bottom:none;padding:16px 18px}
+    tr:last-child{border-bottom:1px solid var(--line)}
+    td{border:none;padding:2px 0}
+    td:first-child{font-size:16px;margin-bottom:4px}
+    .case-head,.case-body{padding-left:22px;padding-right:22px}
+    .card-block{padding:24px 22px 28px}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="eyebrow">Татьяна Касевич</div>
+        <h1>Редактор<br>экспертных текстов</h1>
+        <p class="role">25 лет в медиа и бизнесе · преподаватель</p>
+        <p class="promise">Упаковываю опыт и знания экспертов, сохраняя голос автора.</p>
+        <p class="promise-sub">Экспертные тексты, которые формируют репутацию: от идеи и структуры до финального материала, готового к публикации.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#cases">Смотреть кейсы</a>
+          <a class="btn btn-ghost" href="#contact">Написать мне</a>
+        </div>
+      </div>
+      <div class="portrait">
+        <img src="photo.jpg" alt="Татьяна Касевич, редактор экспертных текстов">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap narrow">
+    <div class="label">О себе</div>
+    <h2>Текст, который доносит смысл</h2>
+    <p class="lead">Редактор-фрилансер, преподаватель. Работаю с экспертными текстами: интервью, статьи для блогов, колонки и другие материалы для медиа.</p>
+    <p>Помогаю экспертам превращать тезисы, черновики и расшифровки в готовые к публикации материалы — с сохранением голоса автора, выстроенной структурой и ясным языком.</p>
+    <p>Ориентируюсь в требованиях медиа и экспертных блогов, адаптирую тексты под их форматы, стилистику и ожидания аудитории. Беру текст на любом этапе — от «голой» расшифровки до финальной вычитки.</p>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap narrow">
+    <div class="label">Опыт</div>
+    <h2>25 лет работы с текстами</h2>
+    <p>В 19 лет начинала журналистом. Позднее работала редактором, пресс-секретарём, райтером и контент-стратегом в компаниях и агентских проектах из разных сфер. Быстро погружаюсь в новую предметную область, понимаю специфику бизнеса и язык профессионального сообщества.</p>
+    <p class="muted" style="font-size:14px;letter-spacing:.06em;margin-top:30px">Сферы, в которых работала изнутри или на аутсорсе</p>
+    <div class="chips">
+      <span class="chip">Алкогольный бизнес</span>
+      <span class="chip">Недвижимость</span>
+      <span class="chip">Рынок климатической техники</span>
+      <span class="chip">Выставочная деятельность</span>
+      <span class="chip">Культурно-просветительские проекты</span>
+      <span class="chip">Антикварные книги и аукционы</span>
+      <span class="chip">Кинопроизводство</span>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING -->
+<section id="teaching">
+  <div class="wrap narrow">
+    <div class="label">Преподавание</div>
+    <h2>Маркетинг, медиа, реклама</h2>
+    <p>Преподаю в вузе с 2013 года, в штате — с 2018-го. Веду дисциплины о маркетинге, медиа и рекламе: социология и психология массовых коммуникаций, медиапланирование, интернет-маркетинг, создание рекламного продукта.</p>
+    <p>Общение со студентами — это ещё и контакт с молодой аудиторией. Такая коммуникация расширяет профессиональную оптику и позволяет смотреть на актуальные тренды, площадки и инструменты под новым углом.</p>
+  </div>
+</section>
+
+<!-- TOPICS -->
+<section id="topics">
+  <div class="wrap">
+    <div class="label">Темы</div>
+    <h2>С чем можно обратиться</h2>
+    <div class="two-col">
+      <div class="card-block">
+        <h3>Для консультаций</h3>
+        <ul>
+          <li><b>Личный бренд: смыслы и содержание</b> — упаковка экспертизы, темы и сообщения, язык и голос автора</li>
+          <li><b>Внешние коммуникации</b> — публичные выступления, поведение и восприятие аудитории, язык профессиональных сообществ</li>
+        </ul>
+      </div>
+      <div class="card-block">
+        <h3>Для текстов</h3>
+        <ul>
+          <li><b>Бизнес и рынки</b> — малый бизнес и предпринимательство, недвижимость, инновации, климатическая техника, алкогольная отрасль</li>
+          <li><b>Креативные индустрии и культурное наследие</b> — кино, выставочная и просветительская деятельность, антикварный рынок, аукционы</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="label">Услуги и форматы</div>
+    <h2>Что я делаю</h2>
+    <table>
+      <thead><tr><th>Формат</th><th>Что делаю</th></tr></thead>
+      <tbody>
+        <tr><td>Интервью</td><td>Редактура расшифровки, выстраивание структуры, заголовок, лид</td></tr>
+        <tr><td>Статья для блога</td><td>От идеи и формата до финального текста: структура, язык, ритм</td></tr>
+        <tr><td>Экспертная колонка</td><td>Редактура текста эксперта, сохранение голоса, фактура</td></tr>
+        <tr><td>Обзор рынка</td><td>Сборка единого нарратива из комментариев нескольких спикеров</td></tr>
+        <tr><td>Посты для соцсетей</td><td>Адаптация длинного текста в серию постов</td></tr>
+        <tr><td>Корректура и вычитка</td><td>Финальная проверка готового текста</td></tr>
+        <tr><td>Учебно-методические материалы</td><td>Разработка учебных кейсов, лекций, практикумов по маркетингу и медиа</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="wrap">
+    <div class="label">Примеры реализованных проектов</div>
+    <h2>Кейсы</h2>
+
+    <!-- CASE 1 -->
+    <article class="case">
+      <div class="case-head">
+        <span class="case-num">Кейс 01</span>
+        <h3>Редактура интервью для нишевого медиа</h3>
+        <p class="case-meta">Интервью с экспертом · ~2800 знаков · 12 вопросов-ответов · опубликовано на VC.ru</p>
+      </div>
+      <div class="case-body">
+        <h4>Задача</h4>
+        <p>Подготовить к публикации интервью с ментором по личному бренду — отредактировать расшифровку, выстроить структуру, сохранить живой голос эксперта.</p>
+        <h4>На входе</h4>
+        <p>Черновик-расшифровка: вопросы пронумерованы, нет заголовка и лида, разговорный тон, повторы, сбитая логика, длинные нечленимые абзацы.</p>
+        <h4>Что сделала</h4>
+        <ul>
+          <li><b>Структура:</b> выстроила логику диалога (биография → методология → курс → отстройка → сложности → перспективы), привела нумерацию к журнальному формату «вопрос — ответ»</li>
+          <li><b>Заголовок и лид:</b> написала заголовок из прямой цитаты и лид-абзац, вводящий героя</li>
+          <li><b>Вопросы:</b> переписала из разговорного стиля в чёткий журнальный — краткие, без повторов</li>
+          <li><b>Ответы:</b> убрала слова-паразиты, сохранив живой тон; сократила повторы, разбила длинные абзацы, выровняла ритм</li>
+          <li><b>Фактура:</b> проверила связность, последовательность событий, формулировки</li>
+        </ul>
+        <h4>До / после — вопросы</h4>
+        <div class="ba">
+          <div class="before">
+            <div class="tag">До</div>
+            <p>«Давай начнем историю с конца. Сегодня вы эксперт в области построения личного бренда, а если посмотреть на историю с конца: с чего всё начиналось?»</p>
+          </div>
+          <div class="after">
+            <div class="tag">После</div>
+            <p>«Итак, сегодня вы — специалист в области построения личного бренда. А с чего начался ваш профессиональный путь в этом направлении?»</p>
+          </div>
+        </div>
+        <div class="ba" style="margin-top:16px">
+          <div class="before">
+            <div class="tag">До</div>
+            <p>«Если представить то, что вы делаете в виде пути, то какие шаги проходит с вами предприниматель или эксперт?»</p>
+          </div>
+          <div class="after">
+            <div class="tag">После</div>
+            <p>«Как выглядит "дорожная карта" вашего курса, через какие этапы вы проходите со своими слушателями, клиентами?»</p>
+          </div>
+        </div>
+        <h4>До / после — ответы</h4>
+        <div class="ba">
+          <div class="before">
+            <div class="tag">До</div>
+            <p>«Помогаю людям, которые находятся в тяжелой ситуации: не могут найти новое место работы, мамочки, которые после декрета понимают, что не могут совместить полный рабочий день и семью, люди за 50, которых не берут на работу из-за возраста.»</p>
+          </div>
+          <div class="after">
+            <div class="tag">После</div>
+            <p>«Речь идет как о представителях бизнеса, так и о людях, которые находятся на каком-то непростом жизненном перекрестке. Это могут быть, например, женщины после декретного отпуска, которые хотели бы выйти на работу, но не представляют, как совмещать полный рабочий день с воспитанием детей. Или люди после пятидесяти, потенциальных работодателей которых смущает их возраст.»</p>
+          </div>
+        </div>
+        <div class="ba" style="margin-top:16px">
+          <div class="before">
+            <div class="tag">До</div>
+            <p>«Через какое количество времени получится? По хорошему полгода на формирование и где-то через год — плюшки и конфеты. Это долгоиграющая история.»</p>
+          </div>
+          <div class="after">
+            <div class="tag">После</div>
+            <p>«К слову, о результатах: около полугода уйдет на то, чтобы выстроить все процессы, а плюшки и бонусы стоит ждать примерно через год.»</p>
+          </div>
+        </div>
+        <div class="result">
+          <strong>Результат</strong>
+          Текст согласован с заказчиком. Изначально опубликован в медиа pitupi.media (ныне закрыто). Версия сохранена в экспертном блоге заказчика на VC.ru.
+        </div>
+      </div>
+    </article>
+
+    <!-- CASE 2 -->
+    <article class="case">
+      <div class="case-head">
+        <span class="case-num">Кейс 02</span>
+        <h3>Статья для блога: от идеи темы до публикации на РБК Компании</h3>
+        <p class="case-meta">Экспертная статья-гайд в формате интервью · 9 шагов · ~6500 знаков · опубликована на РБК Компании</p>
+      </div>
+      <div class="case-body">
+        <h4>Задача</h4>
+        <p>Создать материал о работе с китайскими производителями климатической техники для блока «Мнение эксперта» на РБК Компании — придумать тему, определить формат, собрать фактуру у эксперта и написать финальный текст.</p>
+        <h4>На входе</h4>
+        <p>Эксперт — Александр Кормушкин, директор по стратегическому развитию ГК «АЯК», 20 лет в HVAC-отрасли. От него — подробные ответы на блок вопросов (6 тематических блоков, ~9000 знаков). До этого — концепт-предложение с двумя вариантами упаковки и структурой статьи.</p>
+        <h4>Что сделала</h4>
+        <ul>
+          <li><b>Идея и формат:</b> предложила тему и формат — практический гайд в форме интервью, упакованный как пошаговое руководство. Выбрала из двух вариантов оптимальный для площадки</li>
+          <li><b>Анкета:</b> составила опросник из 6 блоков: контекст и тренды, выбор партнёра, переговоры, контроль качества, логистика, сервис</li>
+          <li><b>Структура:</b> переработала 6 тематических блоков в 9 последовательных шагов — читатель получает не набор тем, а маршрут</li>
+          <li><b>Лид и заход:</b> написала вступление с контекстом рынка. Открыла статью «разрушением мифа» о китайском масс-маркете</li>
+          <li><b>Вопросы:</b> переформулировала из академических в короткие разговорные, добавила связки-переходы</li>
+          <li><b>Ответы:</b> убрала личные оговорки, сократила повторы, выстроила логику. Сохранила экспертный тон и фактуру</li>
+          <li><b>Финал:</b> написала завершающую реплику с резюме и выводом</li>
+        </ul>
+        <h4>До / после — структура</h4>
+        <div class="ba">
+          <div class="before">
+            <div class="tag">До</div>
+            <p>6 тематических блоков (контекст, выбор партнёра, переговоры, качество, логистика, сервис) — параллельные темы без сквозной логики.</p>
+          </div>
+          <div class="after">
+            <div class="tag">После</div>
+            <p>9 последовательных шагов (стратегия → выбор поставщика → коммуникация → переговоры о цене → контракт → контроль качества → платежи → логистика → сервис) — маршрут от идеи до работающего бизнеса.</p>
+          </div>
+        </div>
+        <h4>До / после — вопросы</h4>
+        <div class="ba">
+          <div class="before">
+            <div class="tag">До</div>
+            <p>«Как правильно искать производителя климатической техники в Китае: выставки, агенты, онлайн-платформы, рекомендации? По каким 3-5 ключевым параметрам оценивать завод, производителя (кроме цены), чтобы не получить "гаражную" сборку?»</p>
+          </div>
+          <div class="after">
+            <div class="tag">После</div>
+            <p>«А где и как искать поставщиков?»</p>
+          </div>
+        </div>
+        <div class="ba" style="margin-top:16px">
+          <div class="before">
+            <div class="tag">До</div>
+            <p>«Как правильно торговаться с китайскими партнерами, чтобы снижение цены не привело к автоматическому снижению качества комплектующих?»</p>
+          </div>
+          <div class="after">
+            <div class="tag">После</div>
+            <p>«На каком этапе начинать обсуждать цены и как получить лучшую цену? Что поможет в переговорах?» + follow-up: «Как при снижении цены в процессе торгов не потерять в качестве?»</p>
+          </div>
+        </div>
+        <h4>До / после — ответы</h4>
+        <div class="ba">
+          <div class="before">
+            <div class="tag">До</div>
+            <p>«Вы знаете, мне, наверное, сложно будет сказать сейчас, как искать производителя климатической техники в Китае с нуля. Последний мой опыт разработки производителя с нуля был лет 20 назад...»</p>
+          </div>
+          <div class="after">
+            <div class="tag">После</div>
+            <p>«Выбор поставщиков — это шаг 2. Есть несколько проверенных источников. Во-первых, выставки. Оптимально для новичков в массовых сегментах. Рекомендую Canton Fair... Во-вторых, профильные маркетинговые агентства в России...»</p>
+          </div>
+        </div>
+        <div class="result">
+          <strong>Результат</strong>
+          Материал опубликован в блоге ГК «АЯК» на РБК Компании. Статья оформлена как пошаговое руководство — 9 шагов от выбора стратегии до постпродажного сервиса.
+        </div>
+      </div>
+    </article>
+
+    <!-- CASE 3 -->
+    <article class="case">
+      <div class="case-head">
+        <span class="case-num">Кейс 03</span>
+        <h3>Экспертный обзор рынка: от трёх сырых файлов к связной статье</h3>
+        <p class="case-meta">Обзор рынка · материал на основе комментариев трёх спикеров · ~4500 знаков · опубликован на retail.ru и других отраслевых площадках</p>
+      </div>
+      <div class="case-body">
+        <h4>Задача</h4>
+        <p>Подготовить обзор рынка интерьерного текстиля на основе ответов трёх участников выставки Hometextile &amp; Design. Материал должен быть интересен отраслевым медиа как самостоятельная аналитика, а не только как анонс события.</p>
+        <h4>На входе</h4>
+        <p>ТЗ пришло одной фразой: «Нужен обзор рынка текстиля. Во вложении — всё, что удалось добыть. Не уверены, хватит ли этих цитат». В приложении — три файла с ответами участников на одинаковый блок из шести вопросов:</p>
+        <ul>
+          <li><b>«5 Авеню — Интерьерные ткани»</b> — поставщик европейских тканей, ответы эмоциональные, просторечные, с яркими метафорами</li>
+          <li><b>ART VISION Home / Терри Жар Текстиль</b> — производитель мебельных и интерьерных тканей, ответы сухие, нумерованные списки, корпоративный тон</li>
+          <li><b>Андрей Радаев</b> — президент Межрегионального союза дизайнеров интерьера, ответы в формате «вопрос-ответ», с отступлениями</li>
+        </ul>
+        <h4>Что сделала</h4>
+        <ul>
+          <li><b>Концепция и нарратив:</b> вместо трёх параллельных интервью собрала единый связный текст — обзор рынка через голоса экспертов</li>
+          <li><b>Лид и контекст:</b> написала вступление с данными рынка (доля российского рынка — 1% от мирового, среднегодовой рост 13,5%, объём — 4 млрд долларов). Это дало материалу самостоятельную ценность</li>
+          <li><b>Структура:</b> четыре тематических блока: «Люди решают все», «Новые бизнес-маршруты», «Время производить», «Фокус на клиента». Каждый объединяет мнения 2–3 экспертов</li>
+          <li><b>Атрибуция:</b> добавила к каждому спикеру краткую характеристику</li>
+          <li><b>Редактура ответов:</b> убрала разговорный мусор и отступления, вытянула ключевые тезисы, сохранив живые формулировки как прямые цитаты</li>
+          <li><b>Связки и переходы:</b> написала переходы между блоками и спикерами — текст читается как статья, а не стенограмма</li>
+        </ul>
+        <h4>До / после — лид</h4>
+        <div class="ba">
+          <div class="before">
+            <div class="tag">До</div>
+            <p>Нет — сырые ответы начинаются сразу с первого вопроса.</p>
+          </div>
+          <div class="after">
+            <div class="tag">После</div>
+            <p>«Аналитические отчеты за 2023 год позволяют сделать довольно обнадеживающие выводы: текстильная промышленность в России продолжает адаптироваться к последствиям пандемии и санкций. В преддверии Международной выставки интерьерных тканей Hometextile &amp; Design... обсудили с ее участниками общую ситуацию на рынке, с какими проблемами им пришлось столкнуться и как удается их решать.»</p>
+          </div>
+        </div>
+        <h4>До / после — редактура</h4>
+        <div class="ba">
+          <div class="before">
+            <div class="tag">До</div>
+            <p>«Ситуация на рынке декоративного текстиля сейчас сложная. В основном, работают полюсы с провалом по экватору... образовался "бермудский треугольник"...»</p>
+          </div>
+          <div class="after">
+            <div class="tag">После</div>
+            <p>Тезис переформулирован и встроен в блок «Фокус на клиента»: «финансовые возможности их клиентов изменились, как следствие, проседает и спрос».</p>
+          </div>
+        </div>
+        <div class="ba" style="margin-top:16px">
+          <div class="before">
+            <div class="tag">До</div>
+            <p>«1. Диверсификация ассортимента. 2. Развитие онлайн-продаж. 3. Оптимизация производственных процессов и логистики».</p>
+          </div>
+          <div class="after">
+            <div class="tag">После</div>
+            <p>Связный нарратив: «эксперты ART VISION Home столкнулись с перебоями в поставках сырья и комплектующих... была перенастроена логистика... компания модернизировала оборудование и оптимизировала складские запасы...»</p>
+          </div>
+        </div>
+        <div class="result">
+          <strong>Результат</strong>
+          Материал опубликован на retail.ru, а также на других отраслевых медиаплощадках.
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="wrap">
+    <div class="label">С кем работала</div>
+    <h2>Компании, проекты, издания</h2>
+    <div class="clients">
+      <div>
+        <p class="muted" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px">Компании и организации</p>
+        <p>«Винный мир»<span class="dot">·</span>Nemiroff<span class="dot">·</span>«Биотехнологии»<span class="dot">·</span>Est-a-Tet<span class="dot">·</span>Masterpiece Production<span class="dot">·</span>«Ассоциация японские кондиционеры»<span class="dot">·</span>«Литфонд» и др.</p>
+      </div>
+      <div>
+        <p class="muted" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px">Проекты и события</p>
+        <p>Фестиваль «Артдокфест»<span class="dot">·</span>форум «Открытые инновации»<span class="dot">·</span>проект «Уроки литературы»<span class="dot">·</span>Международный хоккейный форум<span class="dot">·</span>выставка «Золотая осень»<span class="dot">·</span>мультимедийные выставки в «Артплей»<span class="dot">·</span>журнал «Наше наследие» и др.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="label" style="color:rgba(243,237,227,.6)">Контакты</div>
+    <h2>Если у вас есть текст — или замысел текста</h2>
+    <p class="lead">Напишите, что нужно сделать и на каком этапе текст. Отвечу, подхожу ли я для этой задачи.</p>
+    <div class="contact-links">
+      <a class="clink" href="https://t.me/tanya_kasevich" target="_blank" rel="noopener">
+        <span>Telegram</span><b>@tanya_kasevich</b>
+      </a>
+      <a class="clink" href="mailto:tkasevich@mail.ru">
+        <span>E-mail</span><b>tkasevich@mail.ru</b>
+      </a>
+      <a class="clink" href="https://t.me/v_smysle_x" target="_blank" rel="noopener">
+        <span>Канал «В смысле»</span><b>t.me/v_smysle_x</b>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Татьяна Касевич · редактор экспертных текстов</span>
+    <span>Канал <a href="https://t.me/v_smysle_x" target="_blank" rel="noopener">t.me/v_smysle_x</a></span>
+    <span class="x">x = смысл, донесённый до читателя</span>
+  </div>
+</footer>
+
+</body>
+</html>
